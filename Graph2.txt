@@ -1,0 +1,1 @@
+time, Quad1.Est.E.VX, Quad2.Est.E.VX, Quad3.Est.E.VX, Quad4.Est.E.VX, Quad5.Est.E.VX, Quad6.Est.E.VX, Quad7.Est.E.VX, Quad8.Est.E.VX, Quad9.Est.E.VX, Quad10.Est.E.VX, Quad1.Est.S.VX, Quad1.Est.S.VX
