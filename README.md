@@ -44,8 +44,8 @@ My signal noise
 ### Results
 Putting this data into `06_SensorNoise.txt` and re-run scenario 6 resulted in:
 
-![Sensor Noise.](Senor Noise.png)
-![Sensor Noise Vis.](Sensor Noise Vis.png)
+![Sensor Noise.](Sensor_Noise.png)
+![Sensor Noise Vis.](Sensor_Noise_Vis.png)
 
 ## Step 2: Attitude Estimation
 Next step is to improve a complementary filter-type attitude filter which takes current attitude estimate (rollEst, pitchEst and ekfState(6)) into account to integrate the body rates into new Euler angles. There are several ways to go about this, including:
@@ -69,8 +69,8 @@ Next step is to improve a complementary filter-type attitude filter which takes 
 ### Results
 Following the results of scenario `07_AttitudeEstimation` are shown. Estimated error is within the defined limits and actual vs estimate is very close together.
 
-![Attitude Estimation.](Attitude Estimation.png)
-![Attitude Estimation Vis.](Attitude Estimation Vis.png)
+![Attitude Estimation.](Attitude_Estimation.png)
+![Attitude Estimation Vis.](Attitude_Estimation_Vis.png)
 
 ## Step 3: Prediction Step
 ### State Prediction
@@ -100,7 +100,7 @@ Next the prediction function is implemented. At first we need to convert from bo
 ```
 The following picture shows the result of scenario `08_PredictState`. The quadrotor is smothly following its course and that predicted and true values are again tightly correlated.
 
-![Predict State 1.](Predict State 1.png)
+![Predict State 1.](Predict_State_1.png)
 
 ### Covariance Prediction
 In addition to the previouse state prediction scenario, scenario `09_PredictCovariance` introduces a realistic noisy IMU. In QuadEstimatorEKF.cpp, a partial derivative of the body-to-global rotation matrix in the function GetRbgPrime() is calculated. After that the predict function can be finalized. The necessary code is shown below:
@@ -132,7 +132,7 @@ In addition to the previouse state prediction scenario, scenario `09_PredictCova
 ```
 The result looks like this. The Overall parameters are provided at the end of this `README`.
 
-![Predict Cov 2.](Predict Cov 2.png)
+![Predict Cov 2.](Predict_Cov_2.png)
 
 ## Step 4: Magnetometer Update
 Up until now only the accelerometer and gyro were used for state estimation. In this step, the information from the magnetometer will be added  to improve the filter's performance in estimating the vehicle's heading.
@@ -152,8 +152,8 @@ To take the Magentometer into account, only a small adaption is necessary:
 ### Results
 The Magnetometer update is evaluated in scenario `10_MagUpdate`. The tuned parameter is provided the Parameter Set section. 
 
-![Mag Update.](Mag Update.PNG)
-![Mag Update Viz.](Mag Update Viz.png)
+![Mag Update.](Mag_Update.PNG)
+![Mag Update Viz.](Mag_Update_Viz.png)
 
 ## Step 5: Closed Loop + GPS Update
 In the last estimator update GPS is added. To do so, the estimator model needs to be tuned and the `UpdateFromGPS`. For the latter the Equations 53, 54 und 55 from 'Estimation for Quadrotors' from Andy Brown et al. have to be implemented.
@@ -178,15 +178,15 @@ In the last estimator update GPS is added. To do so, the estimator model needs t
 ### Results
 Scenario `11_GpsUpdate` proves, that the additions work as expected.
 
-![GPS Update.](GPS Update.PNG)
-![GPS Update Viz.](GPS Update Viz.png)
+![GPS Update.](GPS_Update.PNG)
+![GPS Update Viz.](GPS_Update_Viz.png)
 
 ## Step 6: Adding Your Controller
 ### Results
 Finally, after the estimator has been completed, the result is tested against or with controller from the previous project. Gladly this also turned out to be satisfactory withour any further tuning. See the results here.
 
-![GPS Update Own Controller.](GPS Update Own Controller.png)
-![GPS Update Own Controller Viz.](GPS Update Own Controller Viz.png.png)
+![GPS Update Own Controller.](GPS_Update_Own_Controller.png)
+![GPS Update Own Controller Viz.](GPS_Update_Own_Controller_Viz.png.png)
 
 ## Parameter Set
 Following parameters (defined in `QuadEstimatorEKF.txt`) are used to tune the Estimator model:
